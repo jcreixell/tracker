@@ -59,5 +59,5 @@ Run the server:
 License
 -------
 
-Copycopter Server is free software, and may be redistributed under the terms
+Tracker is free software, and may be redistributed under the terms
 specified in the MIT-LICENSE file.
