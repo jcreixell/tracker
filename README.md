@@ -1,6 +1,8 @@
 Tracker
 =======
 
+[![Build Status](https://secure.travis-ci.org/jcreixell/tracker.png)](http://travis-ci.org/jcreixell/tracker)
+
 Tracker is a service for tracking custom events from Rails applications.
 
 Each Rails application has its own Project, connected by an API key.
