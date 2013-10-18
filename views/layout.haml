@@ -1,0 +1,33 @@
+%html
+	%head  
+		%title Tracker
+		%link{rel: "stylesheet", href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"}
+		%link{rel: "stylesheet", href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css"}
+		
+	%body{style: "padding-top: 60px;"}
+		%div.navbar.navbar-fixed-top
+			%div.container
+				%div.navbar-header
+					%button.navbar-toggle{type: "button", :'data-toggle' => "collapse", :'data-target' => ".navbar-collapse"}
+						%span.icon-bar
+						%span.icon-bar
+						%span.icon-bar
+					%a.navbar-brand{href: "#"} Tracker
+				%div.collapse.navbar-collapse
+					%ul.nav.navbar-nav
+						%li{class: "active"}
+							%a{href: "#"} Home
+						%li{class: ""}
+							%a{href: "#"} Stats
+						%li{class: ""}
+							%a{href: "#"} About
+
+		%div.container
+			- if @error then
+				%div.alert.alert-error
+					= @error
+
+			= yield
+
+		%script{src: "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"}
+		%script{src: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"}
