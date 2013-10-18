@@ -26,9 +26,18 @@ Deploy
 Deploy Tracker like any other Rails app. Heroku example:
 
     heroku create
+    heroku addons:add mongohq:sandbox # Enable MongoHQ addon
     git push heroku master
 
-(Note: you will need to properly configure MongoDB and RabbitMQ)
+
+Create a Project
+----------------
+
+Use the following rake task:
+
+		bundle exec rake projects:create[project_name]
+
+(Note: you might need to use quotes if you are in zsh)
 
 
 Contribute
