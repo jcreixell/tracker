@@ -11,7 +11,6 @@ log/
 tmp/
 /db/*.sqlite3
 config/database.yml
-config/mongoid.yml
 .sass-cache/
 .tddium*
 .tddium
