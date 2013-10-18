@@ -35,7 +35,7 @@ Create a Project
 
 Use the following rake task:
 
-		bundle exec rake projects:create[project_name]
+    bundle exec rake projects:create[project_name]
 
 (Note: you might need to use quotes if you are in zsh)
 
