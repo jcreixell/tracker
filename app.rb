@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'mongoid'
-require 'pry'
+require 'pry' if Sinatra::Base.development?
 
 require_relative 'models/init'
 
