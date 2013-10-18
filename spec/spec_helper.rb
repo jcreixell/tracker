@@ -11,4 +11,3 @@ end
 def app
   App
 end
-

@@ -4,7 +4,7 @@ require 'uuidtools'
 task :default => :spec
 
 task :environment do |task|
-	require File.expand_path('../app', __FILE__)
+  require File.expand_path('../app', __FILE__)
 end
 
 RSpec::Core::RakeTask.new(:spec) do |task|
