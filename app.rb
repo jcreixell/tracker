@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'mongoid'
 require 'pry' if Sinatra::Base.development?
+require 'json'
 
 require_relative 'models/init'
 
@@ -17,9 +18,9 @@ class App < Sinatra::Base
     haml :index
   end
 
-  # post '/track/:api_key' do
-  #   p params
-  #   Project.find_by(api_key: params[:api_key])
-  # end
+  post '/track/:api_key' do
+    pr = Project.find_by(api_key: params[:api_key])
+    pr.events.create!(type: params[:type], time: params[:time], properties: JSON.parse(params[:properties]))
+  end
 
 end
