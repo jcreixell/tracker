@@ -3,11 +3,7 @@ require 'uuidtools'
 
 feature "Overview page" do
 
-  let(:project) { Project.create!(name: 'test', api_key: UUIDTools::UUID.timestamp_create.to_s) }
-
-  background do
-    Project.delete_all
-  end
+  let(:project) { FactoryGirl.create(:project) }
 
   scenario "Visit overview page for a project" do
     visit "/metrics/#{project.api_key}/overview"
