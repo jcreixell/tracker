@@ -1,0 +1,20 @@
+%h1 Sales
+
+%div#sales{style: "height: 250px"}
+  %div.progress.progress-striped.active{style: "width: 20%; top: 0; margin: auto; position: absolute; left: 0; bottom: 0; right: 0;"}
+    %div.progress-bar{role: "progressbar", :'aria-valuenow' => "100", :'aria-valuemin' => "0", :'aria-valuemax' => "100", style: "width: 100%"}
+      %span Loading...
+
+:javascript
+  function loadChart(data) {
+    $('#' + data.element).empty();
+    new Morris.Line(data);
+  };
+
+  $(function() {
+    var url = '/metrics/#{@api_key}/data/segmentation?callback=?';
+    $.getJSON(url, function(data){
+
+      loadChart(data);
+    });
+  });

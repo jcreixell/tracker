@@ -29,8 +29,22 @@ class App < Sinatra::Base
   end
 
   post '/track/:api_key' do
-    pr = Project.find_by(api_key: params[:api_key])
-    pr.events.create!(type: params[:type], time: params[:time], properties: JSON.parse(params[:properties]))
+    project = Project.find_by(api_key: params[:api_key])
+    project.events.create!(type: params[:type], time: params[:time], properties: JSON.parse(params[:properties]))
+  end
+
+  get '/metrics/:api_key/overview' do
+    @api_key = params[:api_key]
+    haml :'metrics/overview'
+  end
+
+  get '/metrics/:api_key/data/segmentation' do
+    content_type :js
+    callback = params['callback']
+    project = Project.find_by(api_key: params[:api_key])
+    data = Metrics::Segmentation.new(project, "sale", Date.today-1.month, Date.today).process
+    content = encode_chart_data('sales', data)
+    "#{callback}(#{content})"
   end
 
 end
