@@ -5,8 +5,8 @@ module Metrics
       def aggregate(events, field)
         map = %Q{
           function() {
-            var formattedTime = this.time.getFullYear() + "-" + this.time.getMonth() + "-" + this.time.getDate();
-            emit(formattedTime, { sum: this.%d });
+            var day = Date.UTC(this.time.getFullYear(),this.time.getMonth(),this.time.getDate());
+            emit(day, { sum: this.properties.%s });
           }
         } % field
 
@@ -21,7 +21,7 @@ module Metrics
         }
 
         aggregated_data = events.map_reduce(map, reduce).out(inline: true)
-        aggregated_data.map { |element| {DateTime.parse(element['_id']) => element['value'].values.first} }.sort_by{ |element| element.keys.first }
+        aggregated_data.map { |element| {Time.at(element['_id'] / 1000).utc.to_datetime => element['value'].values.first} }.sort_by{ |element| element.keys.first }
       end
 
     end
