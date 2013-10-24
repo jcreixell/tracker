@@ -16,6 +16,8 @@ gem 'mongoid', '~> 3.0.0'
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'factory_girl'
+  gem 'database_cleaner'
 end
 
 group :development do
