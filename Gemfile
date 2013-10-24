@@ -3,18 +3,21 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'thin'
+gem 'rake'
 gem 'foreman'
 
 gem 'haml'
 
 gem 'uuidtools'
 gem 'mongoid', '~> 3.0.0'
-gem 'highcharts-rails', '~> 2.3.5'
 
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'factory_girl'
+  gem 'database_cleaner'
 end
 
 group :development do
