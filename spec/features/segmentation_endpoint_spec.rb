@@ -10,7 +10,6 @@ feature "Overview page" do
   end
 
   scenario "Request segmentation data for a project" do
-    p Event.all.to_s
     get "/metrics/#{project.api_key}/data/segmentation?callback=callback?&startDate=2013-01-01&endDate=2014-01-01"
 
     expect(last_response).to be_successful
