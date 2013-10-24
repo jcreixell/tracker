@@ -1,6 +1,6 @@
 require 'sinatra/base'
+require "sinatra/reloader"
 require 'mongoid'
-require 'pry' if Sinatra::Base.development?
 require 'json'
 
 require_relative 'models/init'
@@ -9,6 +9,10 @@ class App < Sinatra::Base
 
   set :root, File.dirname(__FILE__)
   set :haml, :format => :html5
+  configure :development do
+    require 'pry'
+    register Sinatra::Reloader
+  end
 
   configure do
     Mongoid.load!("./config/mongoid.yml")
