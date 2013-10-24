@@ -12,7 +12,7 @@
   };
 
   $(function() {
-    var url = '/metrics/#{@api_key}/data/segmentation?callback=?';
+    var url = '/metrics/#{@api_key}/data/segmentation?callback=?&startDate=#{@start_date.to_s}&endDate=#{@end_date.to_s}';
     $.getJSON(url, function(data){
 
       loadChart(data);

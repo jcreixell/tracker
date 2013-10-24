@@ -35,6 +35,8 @@ class App < Sinatra::Base
 
   get '/metrics/:api_key/overview' do
     @api_key = params[:api_key]
+    @start_date = Date.parse(params['startDate'])
+    @end_date = Date.parse(params['endDate'])
     haml :'metrics/overview'
   end
 
@@ -42,7 +44,9 @@ class App < Sinatra::Base
     content_type :js
     callback = params['callback']
     project = Project.find_by(api_key: params[:api_key])
-    data = Metrics::Segmentation.new(project, "sale", Date.today-1.month, Date.today).process
+    start_date = Date.parse(params['startDate'])
+    end_date = Date.parse(params['endDate'])
+    data = Metrics::Segmentation.new(project, "sale", start_date, end_date).process
     content = encode_chart_data('sales', data)
     "#{callback}(#{content})"
   end

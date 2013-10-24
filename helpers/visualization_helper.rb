@@ -5,7 +5,7 @@ module VisualizationHelper
       element: element,
       xkey: 'key',
       ykeys: ['value'],
-      labels: ['value'],
+      labels: ['time'],
       data: data.map{ |element| {key: element.keys.first, value: element.values.first.to_i} }
     })
   end
