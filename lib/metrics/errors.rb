@@ -3,7 +3,5 @@ module Metrics
 
     class Base < ::StandardError; end
 
-    class UnsupportedFormat < Base; end
-
   end
 end
