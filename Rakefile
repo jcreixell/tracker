@@ -1,15 +1,7 @@
-require 'rspec/core/rake_task'
 require 'uuidtools'
-
-task :default => :spec
 
 task :environment do |task|
   require File.expand_path('../app', __FILE__)
-end
-
-RSpec::Core::RakeTask.new(:spec) do |task|
-  task.rspec_opts = ["-c", "-f progress", "-r ./spec/spec_helper.rb"]
-  task.pattern    = 'spec/**/*_spec.rb'
 end
 
 namespace :projects do
@@ -21,4 +13,17 @@ namespace :projects do
     puts "  Name: #{project.name}"
     puts "  API_key: #{project.api_key}"
   end
+end
+
+begin
+  require "rspec/core/rake_task"
+
+  task :default => :spec
+
+  desc "Run all examples"
+  RSpec::Core::RakeTask.new(:spec) do |task|
+    task.rspec_opts = ["-c", "-f progress", "-r ./spec/spec_helper.rb"]
+    task.pattern    = 'spec/**/*_spec.rb'
+  end
+rescue LoadError
 end
