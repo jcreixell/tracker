@@ -2,6 +2,7 @@ Tracker
 =======
 
 [![Build Status](https://secure.travis-ci.org/jcreixell/tracker.png)](http://travis-ci.org/jcreixell/tracker)
+[![Code Climate](https://codeclimate.com/github/jcreixell/tracker.png)](https://codeclimate.com/github/jcreixell/tracker)
 
 Tracker is a service for tracking custom events from Rails applications.
 
